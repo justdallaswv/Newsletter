@@ -234,6 +234,11 @@
             background-color: #34d399;
         }
 
+        /* Hidden by default on the live web screen */
+        .print-only-url {
+            display: none;
+        }
+
         /* Responsive layout for mobile phones */
         @media (max-width: 900px) {
             .trifold-container {
@@ -258,7 +263,7 @@
                 padding: 0 !important;
             }
             header h1 {
-                font-size: 1.8rem !important; /* Shrinks title text size so it takes up less vertical space */
+                font-size: 1.8rem !important; 
                 margin: 0 0 2px 0 !important;
             }
             header p {
@@ -278,12 +283,12 @@
                 background: white !important;
                 box-shadow: none !important;
                 border: 1px solid #cbd5e1 !important;
-                padding: 12px !important; /* Compresses content padding inside the columns */
+                padding: 12px !important; 
                 border-radius: 8px !important;
                 page-break-inside: avoid !important;
             }
             .newsletter-img {
-                height: 110px !important; /* Shrinks the image heights slightly on paper to prevent a 2nd page spill */
+                height: 110px !important; 
             }
             h2 { 
                 font-size: 1.1rem !important; 
@@ -297,13 +302,21 @@
                 margin-bottom: 8px !important;
                 color: #334155 !important; 
             }
+            
+            /* 🌐 HIDE BUTTON & SHOW PLAIN TEXT URL FOR PRINTING */
             .standards-link {
-                border: 1px solid black !important;
-                color: black !important;
-                background: none !important;
-                font-size: 0.75rem !important;
-                padding: 6px !important;
+                display: none !important; /* Hides the green button entirely on paper */
             }
+            .print-only-url {
+                display: block !important; /* Activates the plain text container */
+                margin-top: auto !important;
+                font-size: 0.75rem !important;
+                color: #475569 !important;
+                border-top: 1px dashed #cbd5e1 !important;
+                padding-top: 8px !important;
+                word-break: break-all; /* Prevents long link from breaking column border */
+            }
+
             .homework-box {
                 background-color: #fafafa !important;
                 border-left: 3px solid black !important;
@@ -407,10 +420,16 @@
             
             <p>Our curriculum is structured to align precisely with official educational guidelines ensuring students build digital citizenship alongside raw technical skill.</p>
             
-            <!-- Part B: Official Technology Standards Web Link -->
+            <!-- Part B: Green Web Button (Visible on screens only) -->
             <a href="https://wvde.us/academics/middle-secondary-education/computer-science-technology/" target="_blank" class="standards-link">
                 Explore Content Standards ↗
             </a>
+
+            <!-- Plain Text URL Alternative (Visible on printed paper only) -->
+            <div class="print-only-url">
+                <strong>🌐 Content Tech Standards URL:</strong><br>
+                https://wvde.us/academics/middle-secondary-education/computer-science-technology/
+            </div>
         </section>
 
     </main>
