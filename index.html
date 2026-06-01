@@ -3,47 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First AI-Built Website</title>
+    <title>The Digital Frontier: High School IT Newsletter</title>
     <style>
+        :root {
+            --primary-color: #2563eb; /* Tech Blue */
+            --secondary-color: #7c3aed; /* Cyber Purple */
+            --accent-color: #059669; /* Terminal Green */
+            --text-color: #0f172a;
+            --bg-color: #f8fafc;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
         }
-        .container {
+
+        /* Header Style */
+        header {
             text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            max-width: 1200px;
+            padding: 20px;
         }
-        h1 { color: #4F46E5; }
-        p { font-size: 1.1rem; line-height: 1.6; }
-        .badge {
+
+        header h1 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            letter-spacing: -0.05em;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #475569;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Part A: Trifold 3-Column Layout */
+        .trifold-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Column Styling */
+        .column {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            border-top: 6px solid var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+
+        .column:hover {
+            transform: translateY(-5px);
+        }
+
+        .column:nth-child(2) {
+            border-top-color: var(--secondary-color);
+        }
+
+        .column:nth-child(3) {
+            border-top-color: var(--accent-color);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        p {
+            line-height: 1.7;
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            padding-left: 20px;
+            color: #334155;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Part C: Real, Engaging Visuals */
+        .newsletter-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Part B: Standards Button/Link */
+        .standards-link {
             display: inline-block;
-            background: #E0E7FF;
-            color: #4338CA;
-            padding: 5px 15px;
-            border-radius: 20px;
+            margin-top: auto; /* Pushes button to bottom of column */
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            text-align: center;
             font-weight: bold;
-            font-size: 0.9rem;
+            transition: background 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.2);
+        }
+
+        .standards-link:hover {
+            background-color: #047857;
+        }
+
+        /* Responsive layout for mobile phones */
+        @media (max-width: 900px) {
+            .trifold-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <span class="badge">Live on Vercel</span>
-        <h1>Hello, World! 👋</h1>
-        <p>I am building this website using GitHub, Vercel, and Gemini.</p>
-        <p>Every time I update this file, my website updates automatically.</p>
-    </div>
+    <header>
+        <h1>The Digital Frontier 🌐</h1>
+        <p>Information Technology Classroom Connection | High School Edition</p>
+    </header>
+
+    <!-- Trifold Container representing the 3 panels of a brochure -->
+    <main class="trifold-container">
+
+        <!-- PANEL 1: INTRODUCTION TO CONTENT -->
+        <section class="column">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&auto=format&fit=crop&q=60" alt="Tech Classroom" class="newsletter-img">
+            <h2>Welcome to IT Innovation</h2>
+            <p><strong>Welcome Parents, Students, and Community Partners!</strong> Information Technology is no longer just a career field—it is the language of the modern world. This year, our classroom transforms into a hands-on tech incubator.</p>
+            <p>My mission is to transition your students from mere <em>consumers</em> of technology into master <em>creators</em>. We will build an inclusive environment focused on algorithmic thinking, creative problem-solving, and career readiness.</p>
+        </section>
+
+        <!-- PANEL 2: WHAT WE MIGHT TEACH -->
+        <section class="column">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&auto=format&fit=crop&q=60" alt="Code on Screen" class="newsletter-img">
+            <h2>Our Tech Roadmap</h2>
+            <p>Get ready for a fast-paced, exciting dive into industry-standard concepts! Here is a sneak peek at what your future innovators will master this term:</p>
+            <ul>
+                <li><strong>Web Architecture:</strong> Designing interactive responsive platforms using modern HTML5, CSS3, and JavaScript frameworks.</li>
+                <li><strong>Network Security & Systems:</strong> Understanding hardware, data packets, and cloud-computing infrastructure.</li>
+                <li><strong>Cybersecurity Foundations:</strong> Learning ethical hacking, cryptography, and defensive network structures.</li>
+            </ul>
+        </section>
+
+        <!-- PANEL 3: TECHNOLOGY & STANDARDS -->
+        <section class="column">
+            <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&auto=format&fit=crop&q=60" alt="Advanced Hardware" class="newsletter-img">
+            <h2>Learning Through Doing</h2>
+            <p>We believe in authentic integration. Instead of reading from textbooks, we will utilize active developer workflows. Students will use industry tools like integrated development environments (IDEs), cloud command lines, and professional version control platforms like GitHub.</p>
+            
+            <p>Our curriculum is structured to align precisely with official educational guidelines ensuring students build digital citizenship alongside raw technical skill.</p>
+            
+            <!-- Part B: Official Technology Standards Web Link -->
+            <a href="https://wvde.us/academics/middle-secondary-education/computer-science-technology/" target="_blank" class="standards-link">
+                Explore Content Standards ↗
+            </a>
+        </section>
+
+    </main>
+
+</body>
+</html>
 
 </body>
 </html>
