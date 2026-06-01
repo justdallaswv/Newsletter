@@ -203,9 +203,6 @@
             color: #60a5fa;
             margin-top: 15px;
         }
-        .prof-quote-box strong {
-            color: #3b82f6;
-        }
 
         /* Tech Tip Box */
         .tech-tip {
@@ -244,54 +241,98 @@
             }
         }
 
-        /* 🖨️ SPECIAL PRINT MODE INSTRUCTIONS */
+        /* 🖨️ FIXED PRINT MODE INSTRUCTIONS */
         @media print {
+            @page {
+                size: landscape; /* Forces landscape orientation */
+                margin: 0.4cm;  /* Shrinks page margins to max out printable area */
+            }
             body {
                 background-color: white;
                 color: black;
                 padding: 0;
+                margin: 0;
+            }
+            header {
+                margin-bottom: 5px !important;
+                padding: 0 !important;
+            }
+            header h1 {
+                font-size: 1.8rem !important; /* Shrinks title text size so it takes up less vertical space */
+                margin: 0 0 2px 0 !important;
+            }
+            header p {
+                font-size: 0.9rem !important;
+                margin: 0 !important;
             }
             .notice-banner, .utility-bar {
-                display: none; /* Hides print button AND banner on paper */
+                display: none !important; /* Keeps web items hidden */
             }
             .trifold-container {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 12px !important;
+                margin-top: 5px !important;
             }
             .column {
                 background: white !important;
-                box-shadow: none;
-                border: 1px solid #cbd5e1;
-                page-break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1 !important;
+                padding: 12px !important; /* Compresses content padding inside the columns */
+                border-radius: 8px !important;
+                page-break-inside: avoid !important;
             }
-            h2 { color: black !important; }
-            p, ul { color: #334155 !important; }
+            .newsletter-img {
+                height: 110px !important; /* Shrinks the image heights slightly on paper to prevent a 2nd page spill */
+            }
+            h2 { 
+                font-size: 1.1rem !important; 
+                margin-top: 5px !important;
+                margin-bottom: 5px !important;
+                color: black !important; 
+            }
+            p, ul { 
+                font-size: 0.8rem !important;
+                line-height: 1.4 !important;
+                margin-bottom: 8px !important;
+                color: #334155 !important; 
+            }
             .standards-link {
-                border: 1px solid black;
-                color: black;
-                background: none;
-                font-size: 0.8rem;
+                border: 1px solid black !important;
+                color: black !important;
+                background: none !important;
+                font-size: 0.75rem !important;
+                padding: 6px !important;
             }
             .homework-box {
-                background-color: #fafafa;
-                border-left: 4px solid black;
+                background-color: #fafafa !important;
+                border-left: 3px solid black !important;
+                padding: 8px !important;
+                margin-top: 5px !important;
             }
+            .homework-box h3 { font-size: 0.9rem !important; margin-bottom: 4px !important; }
             .prof-quote-box {
-                background: none;
-                border: 1px solid black;
-                color: black;
+                background: none !important;
+                border: 1px solid black !important;
+                color: black !important;
+                padding: 6px !important;
+                margin-top: 5px !important;
+                font-size: 0.75rem !important;
             }
             .tech-tip {
-                background: none;
-                border: 1px dashed black;
-                color: black;
+                background: none !important;
+                border: 1px dashed black !important;
+                color: black !important;
+                padding: 6px !important;
+                margin-top: 5px !important;
+                font-size: 0.75rem !important;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- 🚨 Teacher Conference Notice Banner -->
     <div class="notice-banner">
         ⚠️ PARENT ACTION REQUIRED: Please log into the portal to schedule your Q1 Teacher Conferences ASAP! Slots are filling up fast.
     </div>
@@ -301,14 +342,17 @@
         <p>Information Technology Classroom Connection | High School Edition</p>
     </header>
 
+    <!-- The Print Button Layout -->
     <div class="utility-bar">
         <button class="print-btn" onclick="window.print()">
             🖨️ Print Newsletter / Save as PDF
         </button>
     </div>
 
+    <!-- Trifold Container representing the 3 panels of a brochure -->
     <main class="trifold-container">
 
+        <!-- PANEL 1: INTRODUCTION TO CONTENT -->
         <section class="column">
             <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&auto=format&fit=crop&q=60" alt="Tech Classroom" class="newsletter-img">
             <h2>Welcome to IT Innovation</h2>
@@ -316,6 +360,7 @@
             <p>My mission is to transition your students from mere <em>consumers</em> of technology into master <em>creators</em>. We will build an inclusive environment focused on algorithmic thinking, creative problem-solving, and career readiness.</p>
         </section>
 
+        <!-- PANEL 2: THIS WEEK IN ITEC & HOMEWORK -->
         <section class="column">
             <h2>📅 This Week in ITEC</h2>
             
@@ -334,6 +379,7 @@
                 <p style="margin: 2px 0 0 0;"><strong>Code Jam Friday!</strong> Peer-reviewing our deployed micro-sites and troubleshooting design layouts.</p>
             </div>
 
+            <!-- Homework Board -->
             <div class="homework-box">
                 <h3>📝 Active Assignments</h3>
                 <ul style="margin: 0; padding-left: 15px;">
@@ -342,15 +388,18 @@
                 </ul>
             </div>
 
+            <!-- 🎓 Professor Hudnall Quote Box -->
             <div class="prof-quote-box">
                 <strong>[Professor_Hudnall_Bot]:</strong> "Remember, if your code doesn't work on the first try, it's a feature, not a bug... until grading day. Then it's definitely a bug. Double-check your semicolons!"
             </div>
 
+            <!-- Fun Tech Tip -->
             <div class="tech-tip">
                 <strong>💡 Tech Tip of the Week:</strong> Did you know you can look at the blueprint of almost any website? Right-click anywhere on this page and click <em>"Inspect"</em> to see the exact code building this layout!
             </div>
         </section>
 
+        <!-- PANEL 3: TECHNOLOGY & STANDARDS -->
         <section class="column">
             <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&auto=format&fit=crop&q=60" alt="Advanced Hardware" class="newsletter-img">
             <h2>Learning Through Doing</h2>
@@ -358,6 +407,7 @@
             
             <p>Our curriculum is structured to align precisely with official educational guidelines ensuring students build digital citizenship alongside raw technical skill.</p>
             
+            <!-- Part B: Official Technology Standards Web Link -->
             <a href="https://wvde.us/academics/middle-secondary-education/computer-science-technology/" target="_blank" class="standards-link">
                 Explore Content Standards ↗
             </a>
