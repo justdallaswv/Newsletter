@@ -6,12 +6,13 @@
     <title>The Digital Frontier: High School IT Newsletter</title>
     <style>
         :root {
-            --primary-color: #2563eb; /* Tech Blue */
-            --secondary-color: #7c3aed; /* Cyber Purple */
-            --accent-color: #059669; /* Terminal Green */
-            --warning-color: #ea580c; /* Alert Orange */
-            --text-color: #0f172a;
-            --bg-color: #f8fafc;
+            --primary-color: #3b82f6; /* Vibrant Tech Blue */
+            --secondary-color: #a78bfa; /* Soft Cyber Purple */
+            --accent-color: #10b981; /* Terminal Green */
+            --warning-color: #f97316; /* Alert Orange */
+            --text-color: #f8fafc; /* Light text for dark mode */
+            --bg-color: #1e293b; /* Sleek Dark Gray/Slate */
+            --card-bg: #0f172a; /* Even darker gray for the columns */
         }
 
         body {
@@ -25,12 +26,34 @@
             align-items: center;
         }
 
+        /* 🚨 Urgent Notice Banner (Conference Reminder) */
+        .notice-banner {
+            background-color: #ef4444; /* Alert Red */
+            color: white;
+            width: 100%;
+            max-width: 1150px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+
         /* Header Style */
         header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             max-width: 1200px;
-            padding: 20px;
+            padding: 10px 20px;
         }
 
         header h1 {
@@ -42,7 +65,7 @@
 
         header p {
             font-size: 1.2rem;
-            color: #475569;
+            color: #94a3b8;
             margin: 0;
             font-weight: 500;
         }
@@ -53,8 +76,8 @@
         }
 
         .print-btn {
-            background-color: #e2e8f0;
-            color: #334155;
+            background-color: #334155;
+            color: #f1f5f9;
             border: none;
             padding: 10px 20px;
             border-radius: 8px;
@@ -64,11 +87,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.1s;
         }
 
         .print-btn:hover {
-            background-color: #cbd5e1;
+            background-color: #475569;
+            transform: translateY(-1px);
         }
 
         /* Part A: Trifold 3-Column Layout */
@@ -82,10 +106,10 @@
 
         /* Column Styling */
         .column {
-            background: white;
+            background: var(--card-bg);
             padding: 25px;
             border-radius: 16px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
             border-top: 6px solid var(--primary-color);
             display: flex;
             flex-direction: column;
@@ -108,7 +132,7 @@
             font-size: 1.6rem;
             margin-top: 15px;
             margin-bottom: 15px;
-            color: #1e293b;
+            color: #f1f5f9;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -117,13 +141,13 @@
         p {
             line-height: 1.7;
             font-size: 0.95rem;
-            color: #334155;
+            color: #cbd5e1;
             margin-bottom: 15px;
         }
 
         ul {
             padding-left: 20px;
-            color: #334155;
+            color: #cbd5e1;
             line-height: 1.6;
             font-size: 0.95rem;
         }
@@ -134,13 +158,14 @@
             height: 180px;
             object-fit: cover;
             border-radius: 8px;
+            opacity: 0.9;
         }
 
         /* Weekly Agenda Styling */
         .agenda-day {
             margin-bottom: 10px;
             padding-bottom: 10px;
-            border-bottom: 1px dashed #e2e8f0;
+            border-bottom: 1px dashed #334155;
         }
         .agenda-day:last-child {
             border-bottom: none;
@@ -154,7 +179,7 @@
 
         /* Homework Callout Box */
         .homework-box {
-            background-color: #fff7ed;
+            background-color: #1e1b4b; /* Deep Indigo tint */
             border-left: 4px solid var(--warning-color);
             padding: 15px;
             border-radius: 8px;
@@ -168,12 +193,12 @@
 
         /* Tech Tip Box */
         .tech-tip {
-            background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
+            background-color: #064e3b; /* Dark emerald tint */
+            border: 1px solid #065f46;
             padding: 12px;
             border-radius: 8px;
             font-size: 0.85rem;
-            color: #166534;
+            color: #a7f3d0;
             margin-top: 15px;
         }
 
@@ -182,18 +207,18 @@
             display: inline-block;
             margin-top: auto; /* Pushes button to bottom of column */
             background-color: var(--accent-color);
-            color: white;
+            color: #0f172a;
             text-decoration: none;
             padding: 14px 20px;
             border-radius: 8px;
             text-align: center;
             font-weight: bold;
             transition: background 0.2s;
-            box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
         }
 
         .standards-link:hover {
-            background-color: #047857;
+            background-color: #34d399;
         }
 
         /* Responsive layout for mobile phones */
@@ -210,19 +235,22 @@
                 color: black;
                 padding: 0;
             }
-            .utility-bar {
-                display: none; /* Hides the print button itself when printing */
+            .notice-banner, .utility-bar {
+                display: none; /* Hides print button AND banner on paper */
             }
             .trifold-container {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr); /* Forces trifold layout on paper */
+                grid-template-columns: repeat(3, 1fr);
                 gap: 15px;
             }
             .column {
+                background: white !important;
                 box-shadow: none;
                 border: 1px solid #cbd5e1;
                 page-break-inside: avoid;
             }
+            h2 { color: black !important; }
+            p, ul { color: #334155 !important; }
             .standards-link {
                 border: 1px solid black;
                 color: black;
@@ -236,11 +264,17 @@
             .tech-tip {
                 background: none;
                 border: 1px dashed black;
+                color: black;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- 🚨 NEW: Teacher Conference Notice Banner -->
+    <div class="notice-banner">
+        ⚠️ PARENT ACTION REQUIRED: Please log into the portal to schedule your Q1 Teacher Conferences ASAP! Slots are filling up fast.
+    </div>
 
     <header>
         <h1>The Digital Frontier 🌐</h1>
