@@ -215,23 +215,29 @@
             margin-top: 15px;
         }
 
-        /* Part B: Standards Button/Link */
-        .standards-link {
+        /* Call-to-action buttons for Column 1 & 3 */
+        .action-link {
             display: inline-block;
-            margin-top: auto; /* Pushes button to bottom of column */
-            background-color: var(--accent-color);
-            color: #0f172a;
+            margin-top: auto; /* Aligns automatically at the bottom of the column layout */
+            background-color: var(--primary-color);
+            color: white;
             text-decoration: none;
-            padding: 14px 20px;
+            padding: 12px 18px;
             border-radius: 8px;
             text-align: center;
             font-weight: bold;
-            transition: background 0.2s;
-            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+            transition: filter 0.2s;
+            font-size: 0.9rem;
         }
 
-        .standards-link:hover {
-            background-color: #34d399;
+        .action-link:hover {
+            filter: brightness(1.15);
+        }
+
+        /* Part B: Standards Button/Link specific colors */
+        .standards-link {
+            background-color: var(--accent-color);
+            color: #0f172a;
         }
 
         /* Hidden by default on the live web screen */
@@ -304,17 +310,17 @@
             }
             
             /* 🌐 HIDE BUTTON & SHOW PLAIN TEXT URL FOR PRINTING */
-            .standards-link {
-                display: none !important; /* Hides the green button entirely on paper */
+            .action-link {
+                display: none !important; /* Hides clickable web buttons on paper */
             }
             .print-only-url {
-                display: block !important; /* Activates the plain text container */
+                display: block !important; /* Activates plain text url containers */
                 margin-top: auto !important;
-                font-size: 0.75rem !important;
+                font-size: 0.72rem !important;
                 color: #475569 !important;
                 border-top: 1px dashed #cbd5e1 !important;
-                padding-top: 8px !important;
-                word-break: break-all; /* Prevents long link from breaking column border */
+                padding-top: 6px !important;
+                word-break: break-all;
             }
 
             .homework-box {
@@ -365,12 +371,23 @@
     <!-- Trifold Container representing the 3 panels of a brochure -->
     <main class="trifold-container">
 
-        <!-- PANEL 1: INTRODUCTION TO CONTENT -->
+        <!-- PANEL 1: INTERACTIVE CODING CHALLENGE -->
         <section class="column">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&auto=format&fit=crop&q=60" alt="Tech Classroom" class="newsletter-img">
-            <h2>Welcome to IT Innovation</h2>
-            <p><strong>Welcome Parents, Students, and Community Partners!</strong> Information Technology is no longer just a career field—it is the language of the modern world. This year, our classroom transforms into a hands-on tech incubator.</p>
-            <p>My mission is to transition your students from mere <em>consumers</em> of technology into master <em>creators</em>. We will build an inclusive environment focused on algorithmic thinking, creative problem-solving, and career readiness.</p>
+            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=500&auto=format&fit=crop&q=60" alt="Gamified Coding Graphic" class="newsletter-img">
+            <h2>Play & Learn: Code Challenge</h2>
+            <p>Ready to put your developer logic to the test? This week, our classes are diving into web layout design using a highly addictive, interactive web game called <strong>Flexbox Froggy</strong>.</p>
+            <p>Students must write real CSS layout code to guide different colored frogs to their correct lily pads. It is the exact mechanics web professionals use every single day to align modern application user interfaces—built directly into an epic puzzle game.</p>
+            
+            <!-- Web Button -->
+            <a href="https://flexboxfroggy.com/" target="_blank" class="action-link">
+                Launch Coding Game 🐸
+            </a>
+
+            <!-- Print View Plain Text Link -->
+            <div class="print-only-url">
+                <strong>🐸 Interactive Code Challenge URL:</strong><br>
+                https://flexboxfroggy.com/
+            </div>
         </section>
 
         <!-- PANEL 2: THIS WEEK IN ITEC & HOMEWORK -->
@@ -412,22 +429,21 @@
             </div>
         </section>
 
-        <!-- PANEL 3: TECHNOLOGY & STANDARDS -->
+        <!-- PANEL 3: BREAKING TECH INSIGHTS & STANDARDS -->
         <section class="column">
-            <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&auto=format&fit=crop&q=60" alt="Advanced Hardware" class="newsletter-img">
-            <h2>Learning Through Doing</h2>
-            <p>We believe in authentic integration. Instead of reading from textbooks, we will utilize active developer workflows. Students will use industry tools like integrated development environments (IDEs), cloud command lines, and professional version control platforms like GitHub.</p>
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60" alt="Futuristic Quantum Technology Architecture" class="newsletter-img">
+            <h2>Tech Watch: 2026 Frontiers</h2>
+            <p>Our classroom keeps one foot strictly in the future. Right now, the tech landscape is completely transforming under the weight of commercial quantum accelerators and hyper-realistic AI systems that compile entire movies from text prompts.</p>
+            <p>We read and discuss the industry's newest shifts weekly to keep students ahead of the job market and deeply align our classroom exercises with the official state educational benchmarks.</p>
             
-            <p>Our curriculum is structured to align precisely with official educational guidelines ensuring students build digital citizenship alongside raw technical skill.</p>
-            
-            <!-- Part B: Green Web Button (Visible on screens only) -->
-            <a href="https://wvde.us/academics/middle-secondary-education/computer-science-technology/" target="_blank" class="standards-link">
-                Explore Content Standards ↗
+            <!-- Web Button -->
+            <a href="https://wvde.us/academics/middle-secondary-education/computer-science-technology/" target="_blank" class="action-link standards-link">
+                Explore Tech Content Standards ↗
             </a>
 
-            <!-- Plain Text URL Alternative (Visible on printed paper only) -->
+            <!-- Print View Plain Text Link -->
             <div class="print-only-url">
-                <strong>🌐 Content Tech Standards URL:</strong><br>
+                <strong>🌐 Official State Standards URL:</strong><br>
                 https://wvde.us/academics/middle-secondary-education/computer-science-technology/
             </div>
         </section>
