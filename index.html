@@ -210,8 +210,13 @@
             border: 1px solid #475569;
             padding: 12px;
             border-radius: 8px;
-            margin-top: auto; /* Pushes to the exact bottom of the container */
             font-size: 0.85rem;
+            margin-top: 15px;
+        }
+
+        /* Pushes items to the absolute bottom of the layout flex container */
+        .push-to-bottom {
+            margin-top: auto !important;
         }
         
         .mini-addition-box h4 {
@@ -223,7 +228,7 @@
         }
 
         .mini-addition-box p {
-            margin: 0 0 8px 0;
+            margin: 0;
             font-size: 0.82rem;
             line-height: 1.4;
             color: #94a3b8;
@@ -239,6 +244,7 @@
             border-radius: 4px;
             font-weight: bold;
             font-size: 0.8rem;
+            margin-top: 8px;
             transition: background 0.2s;
         }
         
@@ -246,9 +252,20 @@
             background-color: #2563eb;
         }
 
+        /* Content Standards Standalone Web Button Style */
         .standards-btn {
+            display: block;
             background-color: var(--accent-color);
             color: #0f172a;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            transition: background 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
         }
         .standards-btn:hover {
             background-color: #34d399;
@@ -319,7 +336,7 @@
                 page-break-inside: avoid !important;
             }
             .newsletter-img {
-                height: 105px !important; /* Slightly smaller for seamless page flow */
+                height: 105px !important; 
             }
             h2 { 
                 font-size: 1.1rem !important; 
@@ -335,17 +352,17 @@
             }
             
             /* 🌐 HIDE BUTTONS & SHOW PLAIN TEXT URLS FOR PRINTING */
-            .mini-btn {
+            .mini-btn, .standards-btn {
                 display: none !important; 
             }
             .mini-addition-box {
                 background: none !important;
                 border: 1px solid #cbd5e1 !important;
                 padding: 6px !important;
-                margin-top: auto !important;
+                margin-top: 5px !important;
             }
             .mini-addition-box h4 { color: black !important; font-size: 0.85rem !important; }
-            .mini-addition-box p { color: #475569 !important; font-size: 0.75rem !important; margin-bottom: 4px !important; }
+            .mini-addition-box p { color: #475569 !important; font-size: 0.75rem !important; }
             
             .print-only-url {
                 display: block !important; /* Activates plain text url containers */
@@ -353,6 +370,13 @@
                 color: #0f172a !important;
                 font-family: monospace;
                 word-break: break-all;
+                margin-top: 5px !important;
+            }
+            
+            .standards-print-footer {
+                border-top: 1px dashed #cbd5e1 !important;
+                padding-top: 6px !important;
+                margin-top: auto !important; /* Alignment anchor */
             }
 
             .homework-box {
@@ -410,8 +434,8 @@
             <p><strong>Welcome Parents, Students, and Community Partners!</strong> Information Technology is no longer just a career field—it is the language of the modern world. This year, our classroom transforms into a hands-on tech incubator.</p>
             <p>My mission is to transition your students from mere <em>consumers</em> of technology into master <em>creators</em>. We will build an inclusive environment focused on algorithmic thinking, creative problem-solving, and career readiness.</p>
             
-            <!-- ADDED TO THE BOTTOM OF COLUMN 1 -->
-            <div class="mini-addition-box">
+            <!-- Push box container to line up with column 3 bottom row -->
+            <div class="mini-addition-box push-to-bottom">
                 <h4 style="color: var(--primary-color);">🎮 Fun Student Activity</h4>
                 <p>Try out "Flexbox Froggy" at home to master modern professional web layout configurations through puzzle solving.</p>
                 <a href="https://flexboxfroggy.com/" target="_blank" class="mini-btn">Launch Game 🐸</a>
@@ -466,12 +490,21 @@
             
             <p>Our curriculum is structured to align precisely with official educational guidelines ensuring students build digital citizenship alongside raw technical skill.</p>
             
-            <!-- ADDED TO THE BOTTOM OF COLUMN 3 -->
-            <div class="mini-addition-box" style="margin-top: 15px;">
-                <h4 style="color: var(--accent-color);">🚀 Tech Watch</h4>
+            <!-- Tech Watch Box (Now strictly containing tech news info) -->
+            <div class="mini-addition-box">
+                <h4 style="color: #60a5fa;">🚀 Tech Watch</h4>
                 <p>Track latest updates on generative AI video models and breakthroughs in commercial quantum computing scales.</p>
-                <a href="https://wvde.us/academics/middle-secondary-education/computer-science-technology/" target="_blank" class="mini-btn standards-btn">Content Standards ↗</a>
-                <div class="print-only-url">URL: https://wvde.us/academics/middle-secondary-education/computer-science-technology/</div>
+            </div>
+
+            <!-- Standalone Content Standards Action Row (Anchored to the absolute bottom) -->
+            <div class="push-to-bottom standards-print-footer">
+                <a href="https://wvde.us/academics/middle-secondary-education/computer-science-technology/" target="_blank" class="standards-btn">
+                    Explore Content Standards ↗
+                </a>
+                <div class="print-only-url">
+                    <strong>🌐 Content Tech Standards URL:</strong><br>
+                    https://wvde.us/academics/middle-secondary-education/computer-science-technology/
+                </div>
             </div>
         </section>
 
