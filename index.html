@@ -9,6 +9,7 @@
             --primary-color: #2563eb; /* Tech Blue */
             --secondary-color: #7c3aed; /* Cyber Purple */
             --accent-color: #059669; /* Terminal Green */
+            --warning-color: #ea580c; /* Alert Orange */
             --text-color: #0f172a;
             --bg-color: #f8fafc;
         }
@@ -84,6 +85,9 @@
             margin-top: 15px;
             margin-bottom: 15px;
             color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         p {
@@ -106,6 +110,47 @@
             height: 180px;
             object-fit: cover;
             border-radius: 8px;
+        }
+
+        /* Weekly Agenda Styling */
+        .agenda-day {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .agenda-day:last-child {
+            border-bottom: none;
+        }
+        .day-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* Homework Callout Box */
+        .homework-box {
+            background-color: #fff7ed;
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .homework-box h3 {
+            margin: 0 0 8px 0;
+            color: var(--warning-color);
+            font-size: 1.1rem;
+        }
+
+        /* Tech Tip Box */
+        .tech-tip {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #166534;
+            margin-top: 15px;
         }
 
         /* Part B: Standards Button/Link */
@@ -153,16 +198,38 @@
             <p>My mission is to transition your students from mere <em>consumers</em> of technology into master <em>creators</em>. We will build an inclusive environment focused on algorithmic thinking, creative problem-solving, and career readiness.</p>
         </section>
 
-        <!-- PANEL 2: WHAT WE MIGHT TEACH -->
+        <!-- PANEL 2: THIS WEEK IN ITEC & HOMEWORK (NEW!) -->
         <section class="column">
-            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&auto=format&fit=crop&q=60" alt="Code on Screen" class="newsletter-img">
-            <h2>Our Tech Roadmap</h2>
-            <p>Get ready for a fast-paced, exciting dive into industry-standard concepts! Here is a sneak peek at what your future innovators will master this term:</p>
-            <ul>
-                <li><strong>Web Architecture:</strong> Designing interactive responsive platforms using modern HTML5, CSS3, and JavaScript frameworks.</li>
-                <li><strong>Network Security & Systems:</strong> Understanding hardware, data packets, and cloud-computing infrastructure.</li>
-                <li><strong>Cybersecurity Foundations:</strong> Learning ethical hacking, cryptography, and defensive network structures.</li>
-            </ul>
+            <h2>📅 This Week in ITEC</h2>
+            
+            <div class="agenda-day">
+                <span class="day-name">Mon / Tue:</span>
+                <p style="margin: 2px 0 0 0;"><strong>Intro to Version Control:</strong> Demystifying Git commands and setting up our professional GitHub accounts.</p>
+            </div>
+            
+            <div class="agenda-day">
+                <span class="day-name">Wed / Thu:</span>
+                <p style="margin: 2px 0 0 0;"><strong>The Cloud Pipeline:</strong> Connecting local code repositories to Vercel for real-time web deployment.</p>
+            </div>
+
+            <div class="agenda-day">
+                <span class="day-name">Friday:</span>
+                <p style="margin: 2px 0 0 0;"><strong>Code Jam Friday!</strong> Peer-reviewing our deployed micro-sites and troubleshooting design layouts.</p>
+            </div>
+
+            <!-- Homework Board -->
+            <div class="homework-box">
+                <h3>📝 Active Assignments</h3>
+                <ul style="margin: 0; padding-left: 15px;">
+                    <li><strong>Lab 1.2:</strong> Publish your basic HTML template to your GitHub repository (Due Wednesday night).</li>
+                    <li><strong>Reading:</strong> Read Chapter 3 on "How the Domain Name System (DNS) Works."</li>
+                </ul>
+            </div>
+
+            <!-- Fun Tech Tip to excite them -->
+            <div class="tech-tip">
+                <strong>💡 Tech Tip of the Week:</strong> Did you know you can look at the blueprint of almost any website? Right-click anywhere on this page and click <em>"Inspect"</em> to see the exact code building this layout!
+            </div>
         </section>
 
         <!-- PANEL 3: TECHNOLOGY & STANDARDS -->
@@ -180,9 +247,6 @@
         </section>
 
     </main>
-
-</body>
-</html>
 
 </body>
 </html>
