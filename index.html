@@ -59,12 +59,19 @@
         header h1 {
             font-size: 2.8rem;
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             letter-spacing: -0.05em;
         }
 
+        header h2.subtitle {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+
         header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #94a3b8;
             margin: 0;
             font-weight: 500;
@@ -414,6 +421,10 @@
                 font-size: 1.8rem !important; 
                 margin: 0 0 2px 0 !important;
             }
+            header h2.subtitle {
+                font-size: 1rem !important;
+                margin: 0 0 2px 0 !important;
+            }
             header p {
                 font-size: 0.9rem !important;
                 margin: 0 !important;
@@ -528,35 +539,42 @@
 </head>
 <body>
 
+    <!-- 🚨 Teacher Conference Notice Banner -->
     <div class="notice-banner">
         ⚠️ PARENT ACTION REQUIRED: Please log into the portal to schedule your Q1 Teacher Conferences ASAP! Slots are filling up fast.
     </div>
 
     <header>
         <h1>The Digital Frontier 🌐</h1>
-        <p>Information Technology Classroom Connection | High School Edition</p>
+        <h2 class="subtitle">Professor Hudnall's Information Technology Classroom Connection</h2>
+        <p>High School Edition</p>
     </header>
 
+    <!-- 🗂️ Navigation Tabs Box -->
     <div class="tab-container">
         <button class="tab-btn active" onclick="switchTab('newsletter')">Brochure View</button>
         <button class="tab-btn" onclick="switchTab('semester')">Fall Semester 2026</button>
     </div>
 
+    <!-- The Print Button Layout -->
     <div class="utility-bar">
         <button class="print-btn" onclick="window.print()">
             🖨️ Print Newsletter / Save as PDF
         </button>
     </div>
 
+    <!-- TAB 1: MAIN NEWSLETTER -->
     <div id="newsletter" class="tab-content active">
         <main class="trifold-container">
 
+            <!-- PANEL 1: INTRODUCTION TO CONTENT -->
             <section class="column">
                 <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&auto=format&fit=crop&q=60" alt="Tech Classroom" class="newsletter-img">
                 <h2>Welcome to IT Innovation</h2>
                 <p><strong>Welcome Parents, Students, and Community Partners!</strong> Information Technology is no longer just a career field—it is the language of the modern world. This year, our classroom transforms into a hands-on tech incubator.</p>
                 <p>My mission is to transition your students from mere <em>consumers</em> of technology into master <em>creators</em>. We will build an inclusive environment focused on algorithmic thinking, creative problem-solving, and career readiness.</p>
                 
+                <!-- Push box container to line up with column 3 bottom row -->
                 <div class="mini-addition-box push-to-bottom">
                     <h4 style="color: var(--primary-color);">🎮 Fun Student Activity</h4>
                     <p>Try out "Flexbox Froggy" at home to master modern professional web layout configurations through puzzle solving.</p>
@@ -565,6 +583,7 @@
                 </div>
             </section>
 
+            <!-- PANEL 2: THIS WEEK IN ITEC & HOMEWORK -->
             <section class="column">
                 <h2>📅 This Week in ITEC</h2>
                 
@@ -583,6 +602,7 @@
                     <p style="margin: 2px 0 0 0;"><strong>Code Jam Friday!</strong> Peer-reviewing our deployed micro-sites and troubleshooting design layouts.</p>
                 </div>
 
+                <!-- Homework Board -->
                 <div class="homework-box">
                     <h3>📝 Active Assignments</h3>
                     <ul style="margin: 0; padding-left: 15px;">
@@ -591,15 +611,18 @@
                     </ul>
                 </div>
 
+                <!-- 🎓 Professor Hudnall Quote Box -->
                 <div class="prof-quote-box">
                     <strong>[Professor_Hudnall_Bot]:</strong> "Remember, if your code doesn't work on the first try, it's a feature, not a bug... until grading day. Then it's definitely a bug. Double-check your semicolons!"
                 </div>
 
+                <!-- Fun Tech Tip -->
                 <div class="tech-tip">
                     <strong>💡 Tech Tip of the Week:</strong> Did you know you can look at the blueprint of almost any website? Right-click anywhere on this page and click <em>"Inspect"</em> to see the exact code building this layout!
                 </div>
             </section>
 
+            <!-- PANEL 3: TECHNOLOGY & STANDARDS -->
             <section class="column">
                 <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&auto=format&fit=crop&q=60" alt="Advanced Hardware" class="newsletter-img">
                 <h2>Learning Through Doing</h2>
@@ -607,6 +630,7 @@
                 
                 <p>Our curriculum is structured to align precisely with official educational guidelines ensuring students build digital citizenship alongside raw technical skill.</p>
                 
+                <!-- Tech Watch Box with Live Link -->
                 <div class="mini-addition-box">
                     <h4 style="color: #a78bfa;">🚀 Tech Watch</h4>
                     <p>Track emerging tech trends, futuristic consumer gadget concepts, and wild engineering breakthroughs.</p>
@@ -614,6 +638,7 @@
                     <div class="print-only-url">URL: https://www.engadget.com/tomorrow/</div>
                 </div>
 
+                <!-- Standalone Content Standards Action Row (Anchored to the absolute bottom) -->
                 <div class="push-to-bottom standards-print-footer">
                     <a href="https://wvde.us/academics/middle-secondary-education/computer-science-technology/" target="_blank" class="standards-btn">
                         Explore Content Standards ↗
@@ -628,11 +653,13 @@
         </main>
     </div>
 
+    <!-- TAB 2: FALL SEMESTER 2026 INFO -->
     <div id="semester" class="tab-content">
         <div class="semester-grid">
+            <!-- Left Side: Course Schedule -->
             <div class="column" style="border-top-color: var(--primary-color);">
                 <h2>🏫 Fall 2026 High School Schedule</h2>
-                <p>Below is the classroom rotation block schedule for the upcoming semester.</p>
+                <p>Below is Professor Hudnall's classroom rotation block schedule for the upcoming semester.</p>
                 <table class="schedule-table">
                     <thead>
                         <tr>
@@ -654,7 +681,7 @@
                         </tr>
                         <tr class="open-period">
                             <td><strong>Period 3</strong></td>
-                            <td><strong>Open Period (Planning & Office Hours)</strong></td>
+                            <td><strong>Open Period (Professor Hudnall's Office Hours)</strong></td>
                             <td>Faculty Office B</td>
                         </tr>
                         <tr>
@@ -681,14 +708,16 @@
                 </table>
             </div>
 
+            <!-- Right Side: Office Hours & Schoology Notice -->
             <div class="column" style="border-top-color: var(--secondary-color);">
                 <h2>🕒 Office Hours</h2>
-                <p>Need extra help on a programming lab or debugging a script? Drop by during my open period block:</p>
+                <p>Need extra help on a programming lab or debugging a script? Drop by during Professor Hudnall's open period block:</p>
                 <div class="homework-box" style="background-color: #111827; border-left-color: var(--accent-color); margin-top: 5px;">
                     <h3 style="color: var(--accent-color);">📅 Availability</h3>
                     <p style="margin: 5px 0 0 0; font-size: 0.9rem;">
                         <strong>Days:</strong> Monday through Thursday<br>
                         <strong>Time:</strong> Period 3 (10:15 AM - 11:00 AM)<br>
+                        <strong>Host:</strong> Professor Hudnall<br>
                         <strong>Location:</strong> Faculty Office B / Computer Lab 204
                     </p>
                 </div>
@@ -706,6 +735,7 @@
         </div>
     </div>
 
+    <!-- Tab Switching Logic Script -->
     <script>
         function switchTab(tabId) {
             // Hide all tab contents
