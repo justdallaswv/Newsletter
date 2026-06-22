@@ -70,9 +70,54 @@
             font-weight: 500;
         }
 
+        /* 🗂️ Interactive Tabs System */
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .tab-btn {
+            background-color: #334155;
+            color: #94a3b8;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            background-color: #475569;
+            color: #f1f5f9;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         /* Print Button Utility Container */
         .utility-bar {
             margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
 
         .print-btn {
@@ -100,7 +145,6 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            max-width: 1200px;
             width: 100%;
         }
 
@@ -126,6 +170,54 @@
 
         .column:nth-child(3) {
             border-top-color: var(--accent-color);
+        }
+
+        /* Fall Semester Layout Styles */
+        .semester-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            width: 100%;
+        }
+
+        @media (max-width: 900px) {
+            .semester-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .schedule-table th {
+            background-color: #1e293b;
+            color: var(--primary-color);
+            font-weight: bold;
+            border-bottom: 2px solid #334155;
+        }
+
+        .schedule-table tr {
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .schedule-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-table tr.open-period {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent-color);
         }
 
         h2 {
@@ -326,8 +418,14 @@
                 font-size: 0.9rem !important;
                 margin: 0 !important;
             }
-            .notice-banner, .utility-bar {
+            .notice-banner, .utility-bar, .tab-container {
                 display: none !important; /* Keeps web items hidden */
+            }
+            /* Always print both sections below each other in print layout */
+            .tab-content {
+                display: block !important;
+                margin-bottom: 30px;
+                page-break-after: always;
             }
             .trifold-container {
                 display: grid;
@@ -342,6 +440,21 @@
                 padding: 12px !important; 
                 border-radius: 8px !important;
                 page-break-inside: avoid !important;
+            }
+            .semester-grid {
+                grid-template-columns: 1fr !important;
+                color: black !important;
+            }
+            .schedule-table {
+                background: white !important;
+                border: 1px solid #cbd5e1 !important;
+            }
+            .schedule-table th {
+                background-color: #f1f5f9 !important;
+                color: black !important;
+            }
+            .schedule-table tr.open-period {
+                background-color: #f0fdf4 !important;
             }
             .newsletter-img {
                 height: 105px !important; 
@@ -374,7 +487,7 @@
             
             .print-only-url {
                 display: block !important; /* Activates plain text url containers */
-                font-size: 0.7rem !important;
+                font-size: 0.7cm !important;
                 color: #0f172a !important;
                 font-family: monospace;
                 word-break: break-all;
@@ -415,7 +528,6 @@
 </head>
 <body>
 
-    <!-- 🚨 Teacher Conference Notice Banner -->
     <div class="notice-banner">
         ⚠️ PARENT ACTION REQUIRED: Please log into the portal to schedule your Q1 Teacher Conferences ASAP! Slots are filling up fast.
     </div>
@@ -425,100 +537,189 @@
         <p>Information Technology Classroom Connection | High School Edition</p>
     </header>
 
-    <!-- The Print Button Layout -->
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchTab('newsletter')">Brochure View</button>
+        <button class="tab-btn" onclick="switchTab('semester')">Fall Semester 2026</button>
+    </div>
+
     <div class="utility-bar">
         <button class="print-btn" onclick="window.print()">
             🖨️ Print Newsletter / Save as PDF
         </button>
     </div>
 
-    <!-- Trifold Container representing the 3 panels of a brochure -->
-    <main class="trifold-container">
+    <div id="newsletter" class="tab-content active">
+        <main class="trifold-container">
 
-        <!-- PANEL 1: INTRODUCTION TO CONTENT -->
-        <section class="column">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&auto=format&fit=crop&q=60" alt="Tech Classroom" class="newsletter-img">
-            <h2>Welcome to IT Innovation</h2>
-            <p><strong>Welcome Parents, Students, and Community Partners!</strong> Information Technology is no longer just a career field—it is the language of the modern world. This year, our classroom transforms into a hands-on tech incubator.</p>
-            <p>My mission is to transition your students from mere <em>consumers</em> of technology into master <em>creators</em>. We will build an inclusive environment focused on algorithmic thinking, creative problem-solving, and career readiness.</p>
-            
-            <!-- Push box container to line up with column 3 bottom row -->
-            <div class="mini-addition-box push-to-bottom">
-                <h4 style="color: var(--primary-color);">🎮 Fun Student Activity</h4>
-                <p>Try out "Flexbox Froggy" at home to master modern professional web layout configurations through puzzle solving.</p>
-                <a href="https://flexboxfroggy.com/" target="_blank" class="mini-btn">Launch Game 🐸</a>
-                <div class="print-only-url">URL: https://flexboxfroggy.com/</div>
-            </div>
-        </section>
+            <section class="column">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&auto=format&fit=crop&q=60" alt="Tech Classroom" class="newsletter-img">
+                <h2>Welcome to IT Innovation</h2>
+                <p><strong>Welcome Parents, Students, and Community Partners!</strong> Information Technology is no longer just a career field—it is the language of the modern world. This year, our classroom transforms into a hands-on tech incubator.</p>
+                <p>My mission is to transition your students from mere <em>consumers</em> of technology into master <em>creators</em>. We will build an inclusive environment focused on algorithmic thinking, creative problem-solving, and career readiness.</p>
+                
+                <div class="mini-addition-box push-to-bottom">
+                    <h4 style="color: var(--primary-color);">🎮 Fun Student Activity</h4>
+                    <p>Try out "Flexbox Froggy" at home to master modern professional web layout configurations through puzzle solving.</p>
+                    <a href="https://flexboxfroggy.com/" target="_blank" class="mini-btn">Launch Game 🐸</a>
+                    <div class="print-only-url">URL: https://flexboxfroggy.com/</div>
+                </div>
+            </section>
 
-        <!-- PANEL 2: THIS WEEK IN ITEC & HOMEWORK -->
-        <section class="column">
-            <h2>📅 This Week in ITEC</h2>
-            
-            <div class="agenda-day">
-                <span class="day-name">Mon / Tue:</span>
-                <p style="margin: 2px 0 0 0;"><strong>Intro to Version Control:</strong> Demystifying Git commands and setting up our professional GitHub accounts.</p>
-            </div>
-            
-            <div class="agenda-day">
-                <span class="day-name">Wed / Thu:</span>
-                <p style="margin: 2px 0 0 0;"><strong>The Cloud Pipeline:</strong> Connecting local code repositories to Vercel for real-time web deployment.</p>
+            <section class="column">
+                <h2>📅 This Week in ITEC</h2>
+                
+                <div class="agenda-day">
+                    <span class="day-name">Mon / Tue:</span>
+                    <p style="margin: 2px 0 0 0;"><strong>Intro to Version Control:</strong> Demystifying Git commands and setting up our professional GitHub accounts.</p>
+                </div>
+                
+                <div class="agenda-day">
+                    <span class="day-name">Wed / Thu:</span>
+                    <p style="margin: 2px 0 0 0;"><strong>The Cloud Pipeline:</strong> Connecting local code repositories to Vercel for real-time web deployment.</p>
+                </div>
+
+                <div class="agenda-day">
+                    <span class="day-name">Friday:</span>
+                    <p style="margin: 2px 0 0 0;"><strong>Code Jam Friday!</strong> Peer-reviewing our deployed micro-sites and troubleshooting design layouts.</p>
+                </div>
+
+                <div class="homework-box">
+                    <h3>📝 Active Assignments</h3>
+                    <ul style="margin: 0; padding-left: 15px;">
+                        <li><strong>Lab 1.2:</strong> Publish your basic HTML template to your GitHub repository (Due Wednesday night).</li>
+                        <li><strong>Reading:</strong> Read Chapter 3 on "How the Domain Name System (DNS) Works."</li>
+                    </ul>
+                </div>
+
+                <div class="prof-quote-box">
+                    <strong>[Professor_Hudnall_Bot]:</strong> "Remember, if your code doesn't work on the first try, it's a feature, not a bug... until grading day. Then it's definitely a bug. Double-check your semicolons!"
+                </div>
+
+                <div class="tech-tip">
+                    <strong>💡 Tech Tip of the Week:</strong> Did you know you can look at the blueprint of almost any website? Right-click anywhere on this page and click <em>"Inspect"</em> to see the exact code building this layout!
+                </div>
+            </section>
+
+            <section class="column">
+                <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&auto=format&fit=crop&q=60" alt="Advanced Hardware" class="newsletter-img">
+                <h2>Learning Through Doing</h2>
+                <p>We believe in authentic integration. Instead of reading from textbooks, we will utilize active developer workflows. Students will use industry tools like integrated development environments (IDEs), cloud command lines, and professional version control platforms like GitHub.</p>
+                
+                <p>Our curriculum is structured to align precisely with official educational guidelines ensuring students build digital citizenship alongside raw technical skill.</p>
+                
+                <div class="mini-addition-box">
+                    <h4 style="color: #a78bfa;">🚀 Tech Watch</h4>
+                    <p>Track emerging tech trends, futuristic consumer gadget concepts, and wild engineering breakthroughs.</p>
+                    <a href="https://www.engadget.com/tomorrow/" target="_blank" class="mini-btn tech-watch-btn">Read Fresh Tech ↗</a>
+                    <div class="print-only-url">URL: https://www.engadget.com/tomorrow/</div>
+                </div>
+
+                <div class="push-to-bottom standards-print-footer">
+                    <a href="https://wvde.us/academics/middle-secondary-education/computer-science-technology/" target="_blank" class="standards-btn">
+                        Explore Content Standards ↗
+                    </a>
+                    <div class="print-only-url">
+                        <strong>🌐 Content Tech Standards URL:</strong><br>
+                        https://wvde.us/academics/middle-secondary-education/computer-science-technology/
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="semester" class="tab-content">
+        <div class="semester-grid">
+            <div class="column" style="border-top-color: var(--primary-color);">
+                <h2>🏫 Fall 2026 High School Schedule</h2>
+                <p>Below is the classroom rotation block schedule for the upcoming semester.</p>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Period</th>
+                            <th>Class / Assignment</th>
+                            <th>Room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Period 1</strong></td>
+                            <td>Introduction to Computer Science</td>
+                            <td>Lab 204</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Period 2</strong></td>
+                            <td>AP Computer Science Principles</td>
+                            <td>Lab 204</td>
+                        </tr>
+                        <tr class="open-period">
+                            <td><strong>Period 3</strong></td>
+                            <td><strong>Open Period (Planning & Office Hours)</strong></td>
+                            <td>Faculty Office B</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Period 4</strong></td>
+                            <td>Web Design & Development I</td>
+                            <td>Lab 204</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Period 5</strong></td>
+                            <td>Lunch / Duty Block</td>
+                            <td>Cafeteria</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Period 6</strong></td>
+                            <td>Cybersecurity Fundamentals</td>
+                            <td>Lab 201</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Period 7</strong></td>
+                            <td>Web Design & Development II</td>
+                            <td>Lab 204</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div class="agenda-day">
-                <span class="day-name">Friday:</span>
-                <p style="margin: 2px 0 0 0;"><strong>Code Jam Friday!</strong> Peer-reviewing our deployed micro-sites and troubleshooting design layouts.</p>
-            </div>
+            <div class="column" style="border-top-color: var(--secondary-color);">
+                <h2>🕒 Office Hours</h2>
+                <p>Need extra help on a programming lab or debugging a script? Drop by during my open period block:</p>
+                <div class="homework-box" style="background-color: #111827; border-left-color: var(--accent-color); margin-top: 5px;">
+                    <h3 style="color: var(--accent-color);">📅 Availability</h3>
+                    <p style="margin: 5px 0 0 0; font-size: 0.9rem;">
+                        <strong>Days:</strong> Monday through Thursday<br>
+                        <strong>Time:</strong> Period 3 (10:15 AM - 11:00 AM)<br>
+                        <strong>Location:</strong> Faculty Office B / Computer Lab 204
+                    </p>
+                </div>
 
-            <!-- Homework Board -->
-            <div class="homework-box">
-                <h3>📝 Active Assignments</h3>
-                <ul style="margin: 0; padding-left: 15px;">
-                    <li><strong>Lab 1.2:</strong> Publish your basic HTML template to your GitHub repository (Due Wednesday night).</li>
-                    <li><strong>Reading:</strong> Read Chapter 3 on "How the Domain Name System (DNS) Works."</li>
-                </ul>
-            </div>
-
-            <!-- 🎓 Professor Hudnall Quote Box -->
-            <div class="prof-quote-box">
-                <strong>[Professor_Hudnall_Bot]:</strong> "Remember, if your code doesn't work on the first try, it's a feature, not a bug... until grading day. Then it's definitely a bug. Double-check your semicolons!"
-            </div>
-
-            <!-- Fun Tech Tip -->
-            <div class="tech-tip">
-                <strong>💡 Tech Tip of the Week:</strong> Did you know you can look at the blueprint of almost any website? Right-click anywhere on this page and click <em>"Inspect"</em> to see the exact code building this layout!
-            </div>
-        </section>
-
-        <!-- PANEL 3: TECHNOLOGY & STANDARDS -->
-        <section class="column">
-            <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&auto=format&fit=crop&q=60" alt="Advanced Hardware" class="newsletter-img">
-            <h2>Learning Through Doing</h2>
-            <p>We believe in authentic integration. Instead of reading from textbooks, we will utilize active developer workflows. Students will use industry tools like integrated development environments (IDEs), cloud command lines, and professional version control platforms like GitHub.</p>
-            
-            <p>Our curriculum is structured to align precisely with official educational guidelines ensuring students build digital citizenship alongside raw technical skill.</p>
-            
-            <!-- Tech Watch Box with Live Link -->
-            <div class="mini-addition-box">
-                <h4 style="color: #a78bfa;">🚀 Tech Watch</h4>
-                <p>Track emerging tech trends, futuristic consumer gadget concepts, and wild engineering breakthroughs.</p>
-                <a href="https://www.engadget.com/tomorrow/" target="_blank" class="mini-btn tech-watch-btn">Read Fresh Tech ↗</a>
-                <div class="print-only-url">URL: https://www.engadget.com/tomorrow/</div>
-            </div>
-
-            <!-- Standalone Content Standards Action Row (Anchored to the absolute bottom) -->
-            <div class="push-to-bottom standards-print-footer">
-                <a href="https://wvde.us/academics/middle-secondary-education/computer-science-technology/" target="_blank" class="standards-btn">
-                    Explore Content Standards ↗
-                </a>
-                <div class="print-only-url">
-                    <strong>🌐 Content Tech Standards URL:</strong><br>
-                    https://wvde.us/academics/middle-secondary-education/computer-science-technology/
+                <h2 style="margin-top: 25px;">💻 LMS & Grading Portal</h2>
+                <div class="homework-box" style="margin-top: 5px;">
+                    <h3>Schoology Portal Notice</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 0;"> Please note that we will be utilizing <strong>Schoology</strong> exclusively for all grading, syllabus sign-offs, and progress track records this term.</p>
+                </div>
+                
+                <div class="tech-tip" style="background-color: #1e293b; border-color: #475569; color: #cbd5e1; margin-top: auto;">
+                    <strong>📢 Please check this website often for assignments, communications, activities, and news updates!</strong> Keep this tab bookmarked as a reference tool throughout the semester.
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
-    </main>
+    <script>
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
 
+            // Remove active classes from buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show current target content and assign button highlights
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>
