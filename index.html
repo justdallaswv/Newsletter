@@ -84,6 +84,7 @@
             margin-bottom: 20px;
             width: 100%;
             max-width: 1200px;
+            flex-wrap: wrap;
         }
 
         .tab-btn {
@@ -179,8 +180,8 @@
             border-top-color: var(--accent-color);
         }
 
-        /* Fall Semester Layout Styles */
-        .semester-grid {
+        /* Fall Semester & Tech Fair Layout Styles */
+        .semester-grid, .techfair-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 30px;
@@ -188,7 +189,10 @@
         }
 
         @media (max-width: 900px) {
-            .semester-grid {
+            .semester-grid, .techfair-grid {
+                grid-template-columns: 1fr;
+            }
+            .trifold-container {
                 grid-template-columns: 1fr;
             }
         }
@@ -260,6 +264,14 @@
             opacity: 0.9;
         }
 
+        .project-card-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
         /* Weekly Agenda Styling */
         .agenda-day {
             margin-bottom: 10px;
@@ -276,7 +288,7 @@
             text-transform: uppercase;
         }
 
-        /* Homework Callout Box */
+        /* Homework / Announcement Callout Box */
         .homework-box {
             background-color: #1e1b4b; /* Deep Indigo tint */
             border-left: 4px solid var(--warning-color);
@@ -389,16 +401,18 @@
             margin-top: 15px;
         }
 
+        /* Past Projects List Styling */
+        .past-project-item {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
         /* Hidden by default on the live web screen */
         .print-only-url {
             display: none;
-        }
-
-        /* Responsive layout for mobile phones */
-        @media (max-width: 900px) {
-            .trifold-container {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* 🖨️ FIXED PRINT MODE INSTRUCTIONS */
@@ -432,7 +446,7 @@
             .notice-banner, .utility-bar, .tab-container {
                 display: none !important; /* Keeps web items hidden */
             }
-            /* Always print both sections below each other in print layout */
+            /* Always print all sections down below each other in print layout */
             .tab-content {
                 display: block !important;
                 margin-bottom: 30px;
@@ -452,7 +466,7 @@
                 border-radius: 8px !important;
                 page-break-inside: avoid !important;
             }
-            .semester-grid {
+            .semester-grid, .techfair-grid {
                 grid-template-columns: 1fr !important;
                 color: black !important;
             }
@@ -467,7 +481,7 @@
             .schedule-table tr.open-period {
                 background-color: #f0fdf4 !important;
             }
-            .newsletter-img {
+            .newsletter-img, .project-card-img {
                 height: 105px !important; 
             }
             h2 { 
@@ -487,7 +501,7 @@
             .mini-btn, .standards-btn {
                 display: none !important; 
             }
-            .mini-addition-box {
+            .mini-addition-box, .past-project-item {
                 background: none !important;
                 border: 1px solid #cbd5e1 !important;
                 padding: 6px !important;
@@ -497,7 +511,7 @@
             .mini-addition-box p { color: #475569 !important; font-size: 0.75rem !important; }
             
             .print-only-url {
-                display: block !important; /* Activates plain text url containers */
+                display: block !important; 
                 font-size: 0.7cm !important;
                 color: #0f172a !important;
                 font-family: monospace;
@@ -508,7 +522,7 @@
             .standards-print-footer {
                 border-top: 1px dashed #cbd5e1 !important;
                 padding-top: 6px !important;
-                margin-top: auto !important; /* Alignment anchor */
+                margin-top: auto !important; 
             }
 
             .homework-box {
@@ -554,6 +568,7 @@
     <div class="tab-container">
         <button class="tab-btn active" onclick="switchTab('newsletter')">Brochure View</button>
         <button class="tab-btn" onclick="switchTab('semester')">Fall Semester 2026</button>
+        <button class="tab-btn" onclick="switchTab('techfair')">County Tech Fair 🏆</button>
     </div>
 
     <!-- The Print Button Layout -->
@@ -730,6 +745,84 @@
                 
                 <div class="tech-tip" style="background-color: #1e293b; border-color: #475569; color: #cbd5e1; margin-top: auto;">
                     <strong>📢 Please check this website often for assignments, communications, activities, and news updates!</strong> Keep this tab bookmarked as a reference tool throughout the semester.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: COUNTY TECHNOLOGY FAIR -->
+    <div id="techfair" class="tab-content">
+        <div class="homework-box" style="margin-bottom: 25px; background-color: #1e1b4b; border-left-color: var(--accent-color);">
+            <h3 style="color: var(--accent-color); font-size: 1.4rem;">📣 Mandatory Participation Notice</h3>
+            <p style="margin: 5px 0 0 0;">Attention all IT and Computer Science students! Participation in the annual **County Technology Fair coming up this April** is a mandatory curriculum requirement. This is your chance to showcase your engineering, development, and design skills to regional judges!</p>
+        </div>
+
+        <div class="techfair-grid">
+            <!-- Left Column: Guidelines & Criteria -->
+            <div class="column" style="border-top-color: var(--primary-color);">
+                <h2>📋 Project Guidelines & Criteria</h2>
+                <p>Every submission must align with professional deployment expectations. Your project will be evaluated by an external panel based on the following rules:</p>
+                
+                <ul style="margin-bottom: 20px;">
+                    <li><strong>Team Configurations:</strong> You may choose to work completely <strong>alone or in pairs (groups of 2)</strong>. Roles must be explicitly declared in the project documentation.</li>
+                    <li><strong>Original Source Code:</strong> Templates are strictly prohibited. All core logical engines, CSS files, or app infrastructure scripts must be coded from scratch.</li>
+                    <li><strong>Live Deployment Workflow:</strong> The app/website must be hosted publicly on live services (e.g., GitHub Pages, Vercel, or Netlify) with no staging errors.</li>
+                    <li><strong>Presentation Defense:</strong> Teams must complete a 5-minute technical walkthrough detailing their development architecture, source control log history, and database layout.</li>
+                </ul>
+
+                <h3>📊 Scoring Breakdown Rubric</h3>
+                <table class="schedule-table" style="margin-top: 10px;">
+                    <thead>
+                        <tr>
+                            <th>Evaluation Category</th>
+                            <th>Weight</th>
+                            <th>Target Standard</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Technical Innovation</strong></td>
+                            <td>35%</td>
+                            <td>Code efficiency, complexity, error handling, and logical layout structure.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UI/UX System Design</strong></td>
+                            <td>25%</td>
+                            <td>Responsive viewport breakpoints, color styling, accessibility compliance, and typography.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Real-World Utility</strong></td>
+                            <td>20%</td>
+                            <td>The project directly solves a community, business, or educational pain point effectively.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Oral Presentation</strong></td>
+                            <td>20%</td>
+                            <td>Ability to defend technical decisions, explain git workflow logs, and field jury questions.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Right Column: Past Winners Gallery -->
+            <div class="column" style="border-top-color: var(--secondary-color);">
+                <h2>🏆 Past Winning Inspirations</h2>
+                <p>Review these highly successful student concepts from previous tech competitions to guide your planning phase:</p>
+
+                <div class="past-project-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=60" alt="Analytics App Dashboard Layout" class="project-card-img">
+                    <h4 style="color: var(--secondary-color); margin: 0 0 5px 0;">🥇 1st Place (Web Apps): SecurePass</h4>
+                    <p style="font-size: 0.85rem; margin: 0; color: #94a3b8;">A zero-knowledge client-side encrypted password safe build using native web APIs and local storage structures. (Developed by a solo engineer).</p>
+                </div>
+
+                <div class="past-project-item">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&auto=format&fit=crop&q=60" alt="Video Game Development Assets" class="project-card-img">
+                    <h4 style="color: var(--accent-color); margin: 0 0 5px 0;">🥈 2nd Place (Software): EcoRoute Simulation</h4>
+                    <p style="font-size: 0.85rem; margin: 0; color: #94a3b8;">An algorithmically driven delivery mapping app that tracks city routes to optimize heavy fleet fuel usage parameters. (Developed by a student pair).</p>
+                </div>
+
+                <div class="tech-tip" style="background-color: #1e293b; border-color: #475569; color: #cbd5e1; margin-top: auto;">
+                    <strong>💡 Ready to brainstorm?</strong> Schedule time during Professor Hudnall's Period 3 Office Hours block to review your code blueprints early and confirm project parameters!
                 </div>
             </div>
         </div>
